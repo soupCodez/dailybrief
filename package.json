@@ -1,7 +1,7 @@
 {
   "name": "daily-brief",
   "productName": "Daily Brief",
-  "description": "All your news in one place",
+  "description": "All your daily news in one place!",
   "scripts": {
     "build": "concurrently \"yarn build:main\" \"yarn build:renderer\"",
     "build:main": "cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.main.prod.babel.js",
@@ -30,8 +30,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.erb.ElectronReact",
+    "productName": "Daily Brief",
+    "appId": "com.soupCodez.dailybrief",
     "files": [
       "dist/",
       "node_modules/",
@@ -70,11 +70,16 @@
         "nsis"
       ]
     },
+    "nsis": {
+      "allowToChangeInstallationDirector": true,
+      "oneClick": false,
+      "perMachine": true
+    },
     "linux": {
       "target": [
         "AppImage"
       ],
-      "category": "Development"
+      "category": "News"
     },
     "directories": {
       "app": "src",
@@ -86,47 +91,30 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "owner": "soupCodez",
+      "repo": "dailybrief"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
+    "url": "git+https://github.com/soupCodez/dailybrief.git"
   },
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://electron-react-boilerplate.js.org"
+    "name": "soupCodez"
   },
-  "contributors": [
-    {
-      "name": "Amila Welihinda",
-      "email": "amilajack@gmail.com",
-      "url": "https://github.com/amilajack"
-    },
-    {
-      "name": "John Tran",
-      "email": "jptran318@gmail.com",
-      "url": "https://github.com/jooohhn"
-    }
-  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
+    "url": "https://github.com/soupCodez/dailybrief/issues"
   },
   "keywords": [
     "electron",
-    "boilerplate",
     "react",
     "typescript",
     "ts",
     "sass",
-    "webpack",
-    "hot",
-    "reload"
+    "webpack"
   ],
-  "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
+  "homepage": "https://github.com/soupCodez/dailybrief#readme",
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {
@@ -262,9 +250,6 @@
     "node": ">=10.x",
     "npm": ">=6.x",
     "yarn": ">=1.21.3"
-  },
-  "collective": {
-    "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
   "browserslist": [],
   "prettier": {
