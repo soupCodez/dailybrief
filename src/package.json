@@ -1,7 +1,7 @@
 {
   "name": "daily-brief",
   "productName": "Daily Brief",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "All your daily news in one place!",
   "main": "./main.prod.js",
   "author": {

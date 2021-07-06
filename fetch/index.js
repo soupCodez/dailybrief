@@ -1,18 +1,24 @@
 #!/usr/bin/env node
-const yargs = require('yargs/yargs')
-const { hideBin } = require('yargs/helpers')
-const argv = yargs(hideBin(process.argv)).argv
+const yargs = require('yargs/yargs');
 
-const axios = require('axios')
-const get = axios.get()
+// eslint-disable-next-line prefer-destructuring
+const { hideBin } = require('yargs/helpers');
 
-const fs = require('fs')
+// eslint-disable-next-line prefer-destructuring
+const argv = yargs(hideBin(process.argv)).argv;
 
-const result = await get(`https://newsapi.org/v2/everything?q=tesla&from=2021-06-05&sortBy=publishedAt&apiKey=${argv.token}`)
+const axios = require('axios');
 
-fs.writeFileSync(('../news.json', result, err) => {
+const get = axios.get();
+
+const fs = require('fs');
+
+const result = await get(
+  `https://newsapi.org/v2/everything?q=tesla&from=2021-06-05&sortBy=publishedAt&apiKey=${argv.token}`
+);
+
+fs.writeFileSync('../news.json', result, (err), => {
   if (err) {
-    console.error(err)
-    return
+    console.error(err);
   }
-})
+});
