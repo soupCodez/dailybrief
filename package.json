@@ -14,8 +14,7 @@
     "start:main": "cross-env NODE_ENV=development electron -r ./.erb/scripts/BabelRegister ./src/main.dev.ts",
     "start:renderer": "cross-env NODE_ENV=development webpack serve --config ./.erb/configs/webpack.config.renderer.dev.babel.js",
     "test": "jest",
-    "prepare": "husky install",
-    "pre-commit": "npx --no-install commitlint --edit \"$1\" & cross-env NODE_ENV=development eslint . --cache --ext .js,.jsx,.ts,.tsx"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
