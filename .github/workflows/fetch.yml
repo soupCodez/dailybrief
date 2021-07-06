@@ -23,5 +23,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Fetched new json
     - run: npm ci
     - run: ./fetch/index.js --token ${{ secrets.API_KEY }}
