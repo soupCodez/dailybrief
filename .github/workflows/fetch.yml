@@ -30,4 +30,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm install -g yarn
       - run: yarn install --frozen-lockfile
-      - run: ./fetch/index.js --token ${{ secrets.API_KEY }}
+      - run: node fetch/index.js --token ${{ secrets.API_KEY }}
