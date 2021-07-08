@@ -4,11 +4,10 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: '*/5 * * * *'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,15 +16,18 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Fetched new json
-    - run: npm install -g yarn
-    - run: yarn install --frozen-lockfile
-    - run: ./fetch/index.js --token ${{ secrets.API_KEY }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Fetched new json
+          commit_options: '--no-verify --signoff'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: ./fetch/index.js --token ${{ secrets.API_KEY }}
