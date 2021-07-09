@@ -1,0 +1,33 @@
+name: Release CI
+
+on:
+  release:
+    types: [created, published]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: yarn install, build
+        run: |
+          npm install -g yarn
+          npm run build --if-present
+          npm test
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist-without-markdown
+          path: |
+            release
+            !release/**/*.md
+            !release/*unpacked
+            !release/*.yml
+            !release/*.yaml
+            !release/*.blockmap
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: output/test/code-coverage.html
