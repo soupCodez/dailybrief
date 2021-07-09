@@ -51,8 +51,7 @@ export default merge(baseConfig, {
               publicPath: './',
             },
           },
-          'css-loader',
-          'sass-loader'
+          'css-loader'
         ],
       },
       // WOFF Font
